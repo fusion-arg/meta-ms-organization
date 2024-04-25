@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  meta-ms-organization-app:
+    build:
+      context: ${META_MS_ORGANIZATION_BASEPATH:-.}
+      dockerfile: docker/node/Dockerfile
+    container_name: meta-ms-organization-app
+    image: meta-ms-organization-app
+    ports:
+      - ${META_MS_ORGANIZATION_PORT:-3000}:3000
+    volumes:
+      - ${META_MS_ORGANIZATION_BASEPATH:-.}/:/app/:delegated
+      - /app/node_modules
+    networks:
+      - app-network
+    depends_on:
+      - meta-ms-db
