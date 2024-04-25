@@ -12,5 +12,7 @@ COPY . .
 
 RUN npm run build
 
+RUN chmod -R 777 .
+
 CMD [ "npm", "run", "start:dev" ]
 
